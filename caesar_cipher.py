@@ -66,7 +66,6 @@ while True:
 						new_string += letters[index - 1 : index - 2 : -1]
 					else:
 						new_string += letters[index : index + 1]
-						
 				print(new_string)
 
 		else:
