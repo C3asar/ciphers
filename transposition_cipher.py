@@ -1,6 +1,6 @@
 import random, string
 
-def seperation(user_input, rows):
+def seperation_encrypte(user_input, rows):
 	first = 0
 	second = rows
 	result = []
@@ -27,9 +27,7 @@ def split(result):
 	for word in result:
 		print(" | ".join([char for char in word]))
 
-
-
-def encrypte(result):
+def view(result):
 
 	new = []
 	string = ""
@@ -40,24 +38,44 @@ def encrypte(result):
 		string = ""
 	return new
 
+def seperation_decrypte(user_input, rows):
+	first = 0
+	second = rows
+	list_ = []
+	while second <= len(user_input):
+		list_.append(user_input[first : second])
+		first += rows
+		second += rows
+	return list_
 
 choice = ""
 user = ""
 row_number = ""
 
-while choice != "3":
-	choice = input("1.Encrypte text using Transpose cipher\n2.Display text on the Traspose table\n3.Exit\nYour choice: ")
+while True:
+	choice = input('''
+1.Encrypte text using Transpose Cipher
+2.Display text on the Traspose table
+3.Decrypte text using Transpose Cipher
+4.Exit
+Your choice: ''')
 
-	user = input("Enter the phrase: ").lower().replace(" ", "") 
-	# Ask for rows' number 
-	row_number =  int(input("Enter number of rows: "))
-	print()
-	if choice == "1":
-		print("The encrypted text: " + "".join(encrypte(seperation(user, row_number))))
-	elif choice == "2":
-		split(seperation(user, row_number))
+	
+	if choice == "4":
+		quit()
 	else:
-		print("Please enter a correct input.")
-	print()
+		user = input("Enter the phrase: ").lower().replace(" ", "") 
+		# Ask for rows' number 
+		row_number =  int(input("Enter number of rows: "))
+		print()
+		if choice == "1":
+			print("The Encrypted text: " + "".join(view(seperation_encrypte(user, row_number))))
+		elif choice == "2":
+			split(seperation_encrypte(user, row_number))
+		elif choice == "3":
+			print("The Decrypted text: " + "".join(view(seperation_decrypte(user, row_number))))
+		else:
+			print("Please enter a correct input.")
+		print()
 
 
